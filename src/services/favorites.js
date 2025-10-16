@@ -35,3 +35,4 @@ async function removeFavorite(userId, movieId) {
 }
 
 module.exports = { listFavorites, addFavorite, removeFavorite };
+

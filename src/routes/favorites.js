@@ -7,10 +7,13 @@ const router = express.Router();
 // GET /favorites
 router.get("/", requireAuth, async (req, res) => {
   const items = await listFavorites(req.user.sub);
-  res.json(items);
+  const scored = items
+    .map(x => ({ ...x, suggestionForTodayScore: Math.floor(Math.random() * 100) }))
+    .sort((a, b) => b.suggestionForTodayScore - a.suggestionForTodayScore);
+  res.json(scored);
 });
 
-// POST /favorites  (body mínimo: movieId, title; opcional: posterPath, overview, releaseDate)
+// POST /favorites
 router.post("/", requireAuth, async (req, res) => {
   const { movieId, title, posterPath, overview, releaseDate } = req.body || {};
   if (!movieId || !title) return res.status(400).json({ error: "movieId y title son requeridos" });
@@ -34,3 +37,4 @@ router.delete("/:movieId", requireAuth, async (req, res) => {
 });
 
 module.exports = router;
+

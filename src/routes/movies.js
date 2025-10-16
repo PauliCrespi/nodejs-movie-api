@@ -1,39 +1,27 @@
 ﻿const express = require("express");
-const { searchMovies, popularMovies, getMovie } = require("../services/tmdb");
 const { requireAuth } = require("../middlewares/requireAuth");
+const { searchMovies, popularMovies } = require("../services/tmdb");
 
 const router = express.Router();
 
-// GET /movies/search?query=matrix&page=1
-router.get("/search", requireAuth, async (req, res) => {
-  const { query, page = 1 } = req.query;
-  if (!query || String(query).trim() === "") return res.status(400).json({ error: "query es requerido" });
+// GET /movies?keyword=matrix
+router.get("/", requireAuth, async (req, res) => {
+  const { keyword, page = 1 } = req.query;
   try {
-    const data = await searchMovies(query, Number(page));
-    res.json(data);
-  } catch (e) {
-    res.status(502).json({ error: "error consultando TMDB" });
-  }
-});
+    const data = keyword
+      ? await searchMovies(String(keyword), Number(page))
+      : await popularMovies(Number(page));
 
-// GET /movies/popular?page=1
-router.get("/popular", requireAuth, async (req, res) => {
-  const { page = 1 } = req.query;
-  try {
-    const data = await popularMovies(Number(page));
-    res.json(data);
-  } catch (e) {
-    res.status(502).json({ error: "error consultando TMDB" });
-  }
-});
+    // Agregar suggestionScore 0..99 y ordenar desc
+    const results = (data.results || [])
+      .map(m => ({ ...m, suggestionScore: Math.floor(Math.random() * 100) }))
+      .sort((a, b) => b.suggestionScore - a.suggestionScore);
 
-// GET /movies/:id
-router.get("/:id", requireAuth, async (req, res) => {
-  try {
-    const data = await getMovie(req.params.id);
-    res.json(data);
+    res.json({ page: data.page, total_pages: data.total_pages, results });
   } catch (e) {
-    res.status(404).json({ error: "película no encontrada" });
+    const status = e.response?.status || 502;
+    const detail = { message: e.message, code: e.code, response: e.response?.data };
+    res.status(status).json({ error: "tmdb_error", detail });
   }
 });
 

@@ -1,0 +1,71 @@
+### 🔄 Health Check
+GET http://localhost:3000/health
+
+###
+
+### 👤 Register
+POST http://localhost:3000/auth/register
+Content-Type: application/json
+
+{
+  "email": "test@a.com",
+  "firstName": "Juan",
+  "lastName": "Crespi",
+  "password": "1234"
+}
+
+###
+
+### 🔐 Login
+# @name login
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+  "email": "test@a.com",
+  "password": "1234"
+}
+
+###
+
+### 🙋‍♂️ Usuario logueado (usa el token del request “login”)
+GET http://localhost:3000/me
+Authorization: Bearer {{login.response.body.token}}
+
+###
+
+### 🎬 Obtener películas SIN keyword (populares + suggestionScore ordenado)
+GET http://localhost:3000/movies
+Authorization: Bearer {{login.response.body.token}}
+
+###
+
+### 🎬 Obtener películas CON keyword=matrix (+ suggestionScore ordenado)
+GET http://localhost:3000/movies?keyword=matrix
+Authorization: Bearer {{login.response.body.token}}
+
+###
+
+### ⭐ Listar favoritos (con suggestionForTodayScore ordenado)
+GET http://localhost:3000/favorites
+Authorization: Bearer {{login.response.body.token}}
+
+###
+
+### ➕ Agregar favorito
+POST http://localhost:3000/favorites
+Authorization: Bearer {{login.response.body.token}}
+Content-Type: application/json
+
+{
+  "movieId": 603,
+  "title": "The Matrix",
+  "posterPath": "/f89U3ADr1oiB1s9GkdPOEpXUk5H.jpg"
+}
+
+###
+
+### ❌ Eliminar favorito
+DELETE http://localhost:3000/favorites/603
+Authorization: Bearer {{login.response.body.token}}
+
