@@ -46,7 +46,7 @@ nodejs-movie-api/
 ├── test.http
 ├── package.json
 └── README.md
-```
+
 ## 🔑 Variables de entorno
 Crea un archivo `.env` en la raíz con:
 TMDB_API_KEY=<tu_api_key_v3>
@@ -88,7 +88,6 @@ GET /me
 GET /movies o GET /movies?keyword=matrix
 
 GET /favorites / POST /favorites / DELETE /favorites/:id
-```
 ## 🧠 Notas de diseño
 ```
 Persistencia local: archivos JSON en data/.
@@ -100,4 +99,4 @@ TMDB con API Key v3 (query param api_key).
 suggestionScore y suggestionForTodayScore (0–99) y orden descendente, como pide la consigna.
 
 Rutas protegidas con requireAuth.
-```
+
