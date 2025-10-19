@@ -46,17 +46,12 @@ nodejs-movie-api/
 ├── package.json
 └── README.md
 
-bash
-Copiar código
-
 ## 🔑 Variables de entorno
 Crea un archivo `.env` en la raíz con:
 TMDB_API_KEY=<tu_api_key_v3>
 JWT_SECRET=un_secreto_seguro
 PORT=3000
 
-bash
-Copiar código
 
 ## 🚀 Instalación y ejecución
 ```bash
