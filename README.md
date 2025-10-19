@@ -74,6 +74,7 @@ POST	/favorites	Agregar favorito { movieId, title, ... }	✅
 DELETE	/favorites/:movieId	Eliminar favorito	✅
 
 ## 🧪 Pruebas con REST Client (VS Code)
+```
 Usa test.http (requiere extensión REST Client):
 
 POST /auth/register
@@ -87,8 +88,9 @@ GET /me
 GET /movies o GET /movies?keyword=matrix
 
 GET /favorites / POST /favorites / DELETE /favorites/:id
-
+```
 ## 🧠 Notas de diseño
+```
 Persistencia local: archivos JSON en data/.
 
 JWT incluye sub, email, firstName, lastName.
@@ -98,3 +100,4 @@ TMDB con API Key v3 (query param api_key).
 suggestionScore y suggestionForTodayScore (0–99) y orden descendente, como pide la consigna.
 
 Rutas protegidas con requireAuth.
+```
