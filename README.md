@@ -23,6 +23,7 @@ Cumple con los requerimientos de la evaluación técnica:
 - REST Client (VSCode) para pruebas
 
 ## 📁 Estructura del proyecto
+```
 nodejs-movie-api/
 │
 ├── src/
@@ -45,7 +46,7 @@ nodejs-movie-api/
 ├── test.http
 ├── package.json
 └── README.md
-
+```
 ## 🔑 Variables de entorno
 Crea un archivo `.env` en la raíz con:
 TMDB_API_KEY=<tu_api_key_v3>
