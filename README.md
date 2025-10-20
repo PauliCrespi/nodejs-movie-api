@@ -66,7 +66,7 @@ npm run dev
 ```
 
 ## 🔥 Endpoints
-```
+
 | Método | Ruta | Descripción | Auth |
 |--------|------|--------------|------|
 | POST | `/auth/register` | Registrar usuario (email, firstName, lastName, password) | ❌ |
@@ -78,7 +78,7 @@ npm run dev
 | POST | `/favorites` | Agregar favorito `{ movieId, title, ... }` | ✅ |
 | DELETE | `/favorites/:movieId` | Eliminar favorito | ✅ |
 
-```
+
 
 ---
 ## 🧪 Pruebas con REST Client (VS Code)
