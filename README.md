@@ -46,6 +46,7 @@ nodejs-movie-api/
 ├── test.http
 ├── package.json
 └── README.md
+```
 
 
 ---
@@ -62,6 +63,7 @@ git clone https://github.com/<tu_usuario>/nodejs-movie-api.git
 cd nodejs-movie-api
 npm install
 npm run dev
+```
 
 ## 🔥 Endpoints
 Método	Ruta	Descripción	Auth
@@ -73,6 +75,8 @@ GET	/movies/:id	Detalle de película (opcional)	✅
 GET	/favorites	Listar favoritos + suggestionForTodayScore	✅
 POST	/favorites	Agregar favorito { movieId, title, ... }	✅
 DELETE	/favorites/:movieId	Eliminar favorito	✅
+```
+
 ---
 ## 🧪 Pruebas con REST Client (VS Code)
 ```
@@ -90,6 +94,9 @@ GET /movies o GET /movies?keyword=matrix
 
 GET /favorites / POST /favorites / DELETE /favorites/:id
 
+
+```
+
 ---
 
 ## 🧠 Notas de diseño
@@ -104,3 +111,4 @@ suggestionScore y suggestionForTodayScore (0–99) y orden descendente, como pid
 
 Rutas protegidas con requireAuth.
 
+```
