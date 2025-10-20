@@ -47,12 +47,14 @@ nodejs-movie-api/
 ├── package.json
 └── README.md
 
+
+---
+
 ## 🔑 Variables de entorno
 Crea un archivo `.env` en la raíz con:
-TMDB_API_KEY=<tu_api_key_v3>
-JWT_SECRET=un_secreto_seguro
-PORT=3000
 
+
+---
 
 ## 🚀 Instalación y ejecución
 ```bash
@@ -60,9 +62,8 @@ git clone https://github.com/<tu_usuario>/nodejs-movie-api.git
 cd nodejs-movie-api
 npm install
 npm run dev
-Servidor en: http://localhost:3000
 
-🔥 Endpoints
+## 🔥 Endpoints
 Método	Ruta	Descripción	Auth
 POST	/auth/register	Registrar usuario (email, firstName, lastName, password)	❌
 POST	/auth/login	Autenticar usuario (devuelve token)	❌
@@ -72,7 +73,7 @@ GET	/movies/:id	Detalle de película (opcional)	✅
 GET	/favorites	Listar favoritos + suggestionForTodayScore	✅
 POST	/favorites	Agregar favorito { movieId, title, ... }	✅
 DELETE	/favorites/:movieId	Eliminar favorito	✅
-
+---
 ## 🧪 Pruebas con REST Client (VS Code)
 ```
 Usa test.http (requiere extensión REST Client):
@@ -88,6 +89,9 @@ GET /me
 GET /movies o GET /movies?keyword=matrix
 
 GET /favorites / POST /favorites / DELETE /favorites/:id
+
+---
+
 ## 🧠 Notas de diseño
 ```
 Persistencia local: archivos JSON en data/.
