@@ -67,16 +67,17 @@ npm run dev
 
 ## 🔥 Endpoints
 ```
+| Método | Ruta | Descripción | Auth |
+|--------|------|--------------|------|
+| POST | `/auth/register` | Registrar usuario (email, firstName, lastName, password) | ❌ |
+| POST | `/auth/login` | Autenticar usuario (devuelve token) | ❌ |
+| GET | `/me` | Usuario autenticado (desde el token) | ✅ |
+| GET | `/movies` | Listar películas o buscar con `?keyword=` + `suggestionScore` | ✅ |
+| GET | `/movies/:id` | Detalle de película (opcional) | ✅ |
+| GET | `/favorites` | Listar favoritos + `suggestionForTodayScore` | ✅ |
+| POST | `/favorites` | Agregar favorito `{ movieId, title, ... }` | ✅ |
+| DELETE | `/favorites/:movieId` | Eliminar favorito | ✅ |
 
-Método	Ruta	Descripción	Auth
-POST	/auth/register	Registrar usuario (email, firstName, lastName, password)	❌
-POST	/auth/login	Autenticar usuario (devuelve token)	❌
-GET	/me	Usuario autenticado (desde el token)	✅
-GET	/movies	Listar películas (o buscar con ?keyword=) + suggestionScore	✅
-GET	/movies/:id	Detalle de película (opcional)	✅
-GET	/favorites	Listar favoritos + suggestionForTodayScore	✅
-POST	/favorites	Agregar favorito { movieId, title, ... }	✅
-DELETE	/favorites/:movieId	Eliminar favorito	✅
 ```
 
 ---
