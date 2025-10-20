@@ -66,6 +66,8 @@ npm run dev
 ```
 
 ## 🔥 Endpoints
+```
+
 Método	Ruta	Descripción	Auth
 POST	/auth/register	Registrar usuario (email, firstName, lastName, password)	❌
 POST	/auth/login	Autenticar usuario (devuelve token)	❌
@@ -83,8 +85,10 @@ DELETE	/favorites/:movieId	Eliminar favorito	✅
 Usa test.http (requiere extensión REST Client):
 
 POST /auth/register
+```
 
 # @name login + POST /auth/login
+```
 
 Usa Authorization: Bearer {{login.response.body.token}} en las demás requests:
 
